@@ -1,5 +1,5 @@
 {
-    "name":"rdarricau/zendesk",
+    "name":"dlin/zendesk",
     "description":"PHP Library for Zendesk API",
     "keywords":["zendesk", "api", "webservice"],
     "license":"MIT",
