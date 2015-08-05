@@ -60,6 +60,7 @@ abstract class BaseClient
      * Generic function for getting a collection of entities
      *
      * @param $end_point
+     * @param $collectionName
      * @param int $page
      * @param int $per_page
      * @param null $sort_by
@@ -87,6 +88,7 @@ abstract class BaseClient
 
         $result = new PaginatedResult();
         $result->setClient($this);
+        $result->setCollectionName($collectionName);
 
         if (array_key_exists('count', $values)) {
             $result->setCount($values['count']);

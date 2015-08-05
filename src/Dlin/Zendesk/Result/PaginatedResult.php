@@ -26,6 +26,11 @@ class PaginatedResult implements \ArrayAccess, \Countable {
      */
     private $count;
 
+    /**
+     * @var string
+     */
+    private $collectionName;
+
 
 
     /**
@@ -52,7 +57,7 @@ class PaginatedResult implements \ArrayAccess, \Countable {
      */
     public function getNextResult(){
         if($this->getCount() > $this->per_page * $this->getCurrentPage()){
-            return $this->client->getCollection($this->getEndPoint(), 'tickets', $this->getCurrentPage()+1, $this->getPerPage());
+            return $this->client->getCollection($this->getEndPoint(), $this->getCollectionName(), $this->getCurrentPage()+1, $this->getPerPage());
         }
         return null;
     }
@@ -64,7 +69,7 @@ class PaginatedResult implements \ArrayAccess, \Countable {
      */
     public function getPreviousResult(){
         if($this->getCurrentPage() > 1){
-            return $this->client->getCollection($this->getEndPoint(), 'tickets', $this->getCurrentPage()-1, $this->getPerPage());
+            return $this->client->getCollection($this->getEndPoint(), $this->getCollectionName(), $this->getCurrentPage()-1, $this->getPerPage());
         }
         return null;
     }
@@ -78,12 +83,29 @@ class PaginatedResult implements \ArrayAccess, \Countable {
         $this->client = $client;
     }
 
+
     /**
      * @return \Dlin\Zendesk\Client\BaseClient
      */
     public function getClient()
     {
         return $this->client;
+    }
+
+    /**
+     * @param string $collectionName
+     */
+    public function setCollectionName($collectionName)
+    {
+        $this->collectionName = $collectionName;
+    }
+
+    /**
+     * @return string $collectionName
+     */
+    public function getCollectionName()
+    {
+        return $this->collectionName;
     }
 
     /**
