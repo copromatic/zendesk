@@ -625,6 +625,6 @@ class Ticket extends BaseEntity
         parent::checkCreatable();
         $this->checkFieldsSet(array('subject', 'comment'));
     }
-    
+
 
 }
