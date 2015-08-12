@@ -33,7 +33,7 @@ class ArticleClient extends BaseClient
      * @return \Dlin\Zendesk\Entity\Article
      */
     public function getOneById($id){
-        return $this->getOne("help_center/articles/$id.json");
+        return $this->getOne("help_center/articles/$id.json?include=users");
     }
 
     /**

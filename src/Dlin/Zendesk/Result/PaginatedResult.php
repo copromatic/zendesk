@@ -201,9 +201,11 @@ class PaginatedResult implements \ArrayAccess, \Countable {
             $this->items[$offset] = $value;
         }
     }
+
     public function offsetExists($offset) {
         return isset($this->items[$offset]);
     }
+
     public function offsetUnset($offset) {
         unset($this->items[$offset]);
     }
