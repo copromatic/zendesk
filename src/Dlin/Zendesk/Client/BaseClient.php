@@ -158,6 +158,29 @@ abstract class BaseClient
     }
 
     /**
+     * Generic function for getting something and return the Json response
+     *
+     * @param $end_point
+     * @return string
+     */
+    protected function getInJson($end_point)
+    {
+
+        $end_point = strtolower($end_point);
+        if (strpos($end_point, 'http') !== 0) {
+            $end_point = $this->api->getApiUrl() . $end_point;
+        }
+
+
+        $request = $this->api->get($end_point);
+        $response = $this->processRequest($request);
+        $result = $response->json();
+
+        return $result;
+
+    }
+
+    /**
      * Create an entity
      *
      * @param BaseEntity $entity
